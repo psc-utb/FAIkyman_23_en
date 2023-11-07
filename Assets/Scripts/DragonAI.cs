@@ -72,4 +72,15 @@ public class DragonAI : MonoBehaviour
     {
         isAttacking = false;
     }
+
+    public void RunDeadAnimation()
+
+    {
+        _animator.SetTrigger("Dead");
+    }
+
+    public void DestroyDragon()
+    {
+        Destroy(transform.parent.gameObject);
+    }
 }

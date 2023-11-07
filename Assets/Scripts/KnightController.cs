@@ -63,4 +63,15 @@ public class KnightController : MonoBehaviour
     {
         isAttacking = false;
     }
+
+    public void RunDeadAnimation()
+
+    {
+        _animator.SetTrigger("Dead");
+    }
+
+    public void DestroyKnight()
+    {
+        Destroy(this.gameObject);
+    }
 }

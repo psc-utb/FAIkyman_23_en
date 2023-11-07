@@ -12,7 +12,13 @@ public class AttackCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(gameObject.name + " collision");
+        CharacterBehavior attacker = this.GetComponentInParent<CharacterBehavior>();
+        CharacterBehavior target = collision.gameObject.GetComponent<CharacterBehavior>();
+
+        if (attacker != null && target != null)
+        {
+            attacker.Attack(target);
+        }
     }
 
 }

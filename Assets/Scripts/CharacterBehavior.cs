@@ -12,6 +12,7 @@ public class CharacterBehavior : MonoBehaviour, IGetHealthSystem
     HealthSystem _healthSystem;
 
     public UnityEvent<GameObject> Died;
+    public UnityEvent<GameObject, int> HealthChanged;
 
     void Awake()
     {
@@ -41,9 +42,10 @@ public class CharacterBehavior : MonoBehaviour, IGetHealthSystem
         }
     }
 
-    private void Character_HealthChanged(int arg1, int arg2)
+    private void Character_HealthChanged(int oldHealth, int newHealth)
     {
-        
+        HealthChanged?.Invoke(this.gameObject, newHealth - oldHealth);
+
         if (character.IsAlive() == false)
         {
             Died?.Invoke(this.gameObject);
